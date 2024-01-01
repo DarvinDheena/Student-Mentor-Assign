@@ -25,6 +25,16 @@ studentRouter.post('/create',(request,response)=>{
     }
 })
 
+// endpoint to delete a student
+
+studentRouter.delete('/:id',(request,response)=>{
+    const id = request.params.id ;
+    Student.findByIdAndDelete(id)
+        .then(deleteStudent =>{
+            response.status(200).json({ message : 'id deleted'})
+        })
+})
+
 // endpoint to view all previously add mentors for a particular students
 
 studentRouter.get('/:id/previusmentors', async (request,response) => {
