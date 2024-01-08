@@ -31,7 +31,9 @@ studentRouter.delete('/:id',(request,response)=>{
     const id = request.params.id ;
     Student.findByIdAndDelete(id)
         .then(deleteStudent =>{
-            response.status(200).json({ message : 'id deleted'})
+            if (deleteStudent){
+                response.status(200).json({ message : 'id deleted'})
+            }
         })
 })
 
