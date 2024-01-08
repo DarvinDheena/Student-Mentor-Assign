@@ -51,5 +51,15 @@ mentorRouter.get('/:id/students',(request,response)=>{
 
 })
 
+// endpoint to delete a mentor 
+
+mentorRouter.delete('/:id',(request,response) =>{
+    const id = request.params.id ;
+    Mentor.findByIdAndDelete(id)
+        .then(deletedMentor =>{
+            response.status(200).json({ message : 'mentor deleted' });
+        })
+})
+
 
 module.exports = mentorRouter ;
